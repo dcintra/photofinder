@@ -4,7 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var Flickr = require("flickrapi"),
+             flickrOptions = {
+                 api_key: "6ac3f568073aea1cca183c3ca08e974c",
+                 secret: "9eadb76bb8109d45"
+                };
 var routes = require('./routes/index');
 
 var app = express();
@@ -23,12 +27,40 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+
+//FLICKR
+// app.get('/photos/:query', function(req, res) {
+//     var query = req.params.query; 
+//     Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+//       flickr.photos.search({
+//           text: query,
+//           page: 1,
+//           per_page: 500
+//                         }, function(err, result) {
+//                           console.log(result.photos.photo[1]);
+//                           var farmId = result.photos.photo[1].farm;
+//                           var serverId = result.photos.photo[1].server;
+//                           var id = result.photos.photo[1].id;
+//                           var secretId = result.photos.photo[1].secret;
+//                           var url = "http://farm"+farmId+".staticflickr.com/"+serverId+"/"+id+"_"+secretId+".jpg"
+//                           res.render('index', {
+//                             title:result.photos.pages+6, 
+//                             id: url
+
+//                           })
+//                         });
+//     });
+// });
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
 
 // error handlers
 
@@ -53,6 +85,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
 
 
 module.exports = app;
