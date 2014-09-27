@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<% include  partials/head.ejs %>
+ 	<!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+ 	<script type="text/javascript">
+ function ExampleJS(){
+    var jFirst = document.getElementById("photoSearchQuery").value;
+    alert("Your name is: " + jFirst);
+ }
+ </script>
+		
+ </head>
+  <body>
+    <div class="container">
+    	<div class="col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="input-group">
+            <input type="text" class="form-control" id="photoSearchQuery" placeholder="Search for images" action="JavaScript:ExampleJS()">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" value="Update" id="submit">Search Flickr</button>
+              </span>      
+          </div><!-- /input-group -->
+<!--           <FORM NAME="myform" onSubmit="JavaScript:ExampleJS()">
+
+         First name: <input type="text" id="fname" name="firstname" /><br />
+         Last name:  <input type="text" id="lname" name="lastname" /><br />
+        <input name="Submit"  type="submit" value="Update" /> -->
+    </FORM>
+        </div><!-- /.row -->
+      </div><!-- col-md-8 col-md-offset-2 -->
+    </div>
+  </body>
+</html>
