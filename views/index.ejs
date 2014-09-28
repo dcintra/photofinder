@@ -3,28 +3,21 @@
  <head>
  	<% include  partials/head.ejs %>
  	<!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
- 	<script type="text/javascript">
- function ExampleJS(){
-    var jFirst = document.getElementById("photoSearchQuery").value;
-    alert("Your name is: " + jFirst);
- }
- </script>
 		
+
+
  </head>
   <body>
     <div class="container">
     	<div class="col-md-8 col-md-offset-2">
         <div class="row">
           <div class="input-group">
-            <input type="text" class="form-control" id="photoSearchQuery" placeholder="Search for images" action="JavaScript:ExampleJS()">
+            <input valutype="text" class="form-control" id="photoSearchQuery" placeholder="Search for images" method="POST">
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit" value="Update" id="submit">Search Flickr</button>
-              </span>      
+                <button class="btn btn-primary" id="searchbutton" type="button" value="Search" method="POST">Search Flickr</button>
+              </span> 
           </div>
-		  <form name="input" action="JavaScript:ExampleJS()" method="get">
-				Username: <input type="text" name="user">
-				<input type="submit" value="Submit">
-			</form>
+		  
           <!-- /input-group -->
 <!--           <FORM NAME="myform" onSubmit="JavaScript:ExampleJS()">
 
@@ -35,5 +28,6 @@
         </div><!-- /.row -->
       </div><!-- col-md-8 col-md-offset-2 -->
     </div>
+    <script src="/javascripts/search.js"></script>
   </body>
 </html>
