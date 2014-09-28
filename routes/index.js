@@ -3,12 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', {  
+  res.render('index', { 
+  query: 'sdsda' 
   });
 });
 
-router.get('/search', function(req, res) {
-  res.render('index', {  
+router.get('/photos', function(req, res) {
+  res.locals.query = req.params;
+  res.render('index', {
+  	
   });
 });
 
