@@ -9,9 +9,11 @@ var Flickr = require("flickrapi"),
                  api_key: "6ac3f568073aea1cca183c3ca08e974c",
                  secret: "9eadb76bb8109d45"
                 };
-var routes = require('./routes/index');
-
+var routes = require('./routes');
+// var router = express.Router();  
 var app = express();
+
+app.locals.flickr = 'Flickr';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,10 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', routes);
 
-
+//=================================
 //FLICKR
+//=================================
+
 // app.get('/photos/:query', function(req, res) {
 //     var query = req.params.query; 
 //     Flickr.tokenOnly(flickrOptions, function(error, flickr) {
@@ -53,38 +59,42 @@ app.use('/', routes);
 // });
 
 
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+//=================================
+//ERROR HANDLING,
+//=================================
 
 
-// error handlers
+// // catch 404 and forward to error handler
+// app.use(function(req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+// // error handlers
+
+// // development error handler
+// // will print stacktrace
+// if (app.get('env') === 'development') {
+//     app.use(function(err, req, res, next) {
+//         res.status(err.status || 500);
+//         res.render('error', {
+//             message: err.message,
+//             error: err
+//         });
+//     });
+// }
+
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//         message: err.message,
+//         error: {}
+//     });
+// });
 
 
 
