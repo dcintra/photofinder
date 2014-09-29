@@ -2,7 +2,7 @@
 document.getElementById('searchbutton').onclick = function()
 {
     var query = document.getElementById('photoSearchQuery').value;
-    alert(query)
+    location.href="http://localhost:3000/photos/"+encodeURI(query);
 };
 
 document.getElementById('photoSearchQuery').onkeydown=function(){

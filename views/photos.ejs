@@ -2,25 +2,34 @@
 <html>
  <head>
  	<% include  partials/head.ejs %>
- 	<!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+ 	<link rel='stylesheet' href='/stylesheets/photogrid.css' />
  </head>
   <body>
     <div class="container">
-		<p>
-			<%= query %>
-		</p> 
-		<p>
-			<%= test %>
-		</p>
-		<p>
-			<%= title %>
-		</p> 
-		<p>
-			<%= image %>
-		</p> 
 
-    HELLO We're in the photos URL
-    </div>
+ <!-- Photogrid -->   
+		<ul class="thumbnails row">
+			<%for (var i =0; i < photosArray.length; i++) { %>
+				<li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+	    			<a href="#" class="thumbnail">
+	     			 <img data-src="holder.js/150x150" src="http://farm<%= photosArray[i].farm %>.staticflickr.com/<%= photosArray[i].server %>/<%= photosArray[i].id %>_<%= photosArray[i].secret %>_q.jpg" alt="">
+	    			</a>
+	  			</li>
+			<%}%>	
+		</ul>
+<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	      <div class="modal-dialog">
+	        <div class="modal-content">         
+	          <div class="modal-body">
+	          </div>
+	        </div><!-- /.modal-content -->
+	      </div><!-- /.modal-dialog -->
+	    </div><!-- /.modal -->
+
+    </div> <!-- div container -->
     <script src="/javascripts/search.js"></script>
+    <script src="/javascripts/modalpopup.js"></script>
+
   </body>
 </html>

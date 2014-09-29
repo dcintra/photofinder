@@ -20,19 +20,13 @@ router.get('/photos/:query?', function(req, res) {
       flickr.photos.search({
           text: query,
           page: 1,
-          per_page: 500
+          per_page: 10
                         }, function(err, result) {
-                          console.log(result.photos.photo[1]);
-                          var farmId = result.photos.photo[1].farm;
-                          var serverId = result.photos.photo[1].server;
-                          var id = result.photos.photo[1].id;
-                          var secretId = result.photos.photo[1].secret;
-                          var url = "http://farm"+farmId+".staticflickr.com/"+serverId+"/"+id+"_"+secretId+".jpg"
+                          console.log(result.photos.photo);
+                          var photos = result.photos.photo;
                           res.render('photos', {
                             query: query,
-                            test: test,
-                            title:result.photos.pages, 
-                            image: url
+                            photosArray: photos
                           })
                         });
     });
@@ -41,43 +35,3 @@ router.get('/photos/:query?', function(req, res) {
 module.exports = router;
 
 
-// exports.index = function(request, response){
-// 	response.render('default', {
-// 		title: 'Home',
-// 		classname: 'home',
-// 		users: ['Ray', 'Morten', 'James']
-// 	});
-// }
-
-// exports.photos = function(request, response){
-// 	response.render('default', {
-// 		title: 'About',
-// 		classname: 'about'
-// 	});
-// }
-
-
-
-//FLICKR
-// app.get('/photos/:query', function(req, res) {
-//     var query = req.params.query; 
-    // Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-    //   flickr.photos.search({
-    //       text: query,
-    //       page: 1,
-    //       per_page: 500
-    //                     }, function(err, result) {
-    //                       console.log(result.photos.photo[1]);
-    //                       var farmId = result.photos.photo[1].farm;
-    //                       var serverId = result.photos.photo[1].server;
-    //                       var id = result.photos.photo[1].id;
-    //                       var secretId = result.photos.photo[1].secret;
-    //                       var url = "http://farm"+farmId+".staticflickr.com/"+serverId+"/"+id+"_"+secretId+".jpg"
-    //                       res.render('index', {
-    //                         title:result.photos.pages+6, 
-    //                         id: url
-
-    //                       })
-    //                     });
-    // });
-// });
