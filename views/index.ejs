@@ -2,16 +2,17 @@
 <html>
  <head>
  	<% include  partials/head.ejs %>
-   <!-- jQuery -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-
-
-
-
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link href="/stylesheets/datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
  </head>
   <body>
+   
     <div class="container">
+    <div class="helper">
+    <div class="content">
 
+    
+  <!-- Main Search Bar -->
     	<div class="col-md-8 col-md-offset-2">
         <div class="row">
           <div class="input-group">
@@ -19,19 +20,104 @@
               <span class="input-group-btn">
                 <button class="btn btn-primary" id="searchbutton" type="button" value="Search" method="POST">Search Flickr</button>
               </span> 
-          </div>
+          </div> <!-- input-group -->
         </div><!-- /.row -->
       </div><!-- col-md-8 col-md-offset-2 -->
-      <div class="datepickerdiv">
-        <input id='d1' type='text' /><br/>
-        <input id='d2' type='text' />
+ 
+<!-- Space -->
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <p></p>
+        </div>
       </div>
 
+  <div class="col-md-8 col-md-offset-2">
+  <!-- Advanced Search Collapsable Panel -->
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h6 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Advanced Search
+          </a>
+        </h4>
+      </div> <!-- Panel Heading -->
+      <div id="collapseOne" class="panel-collapse collapse">
+        <div class="panel-body">
+            <!-- Advanced Search Items -->
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="advancedsearch-form-after">
+                         <table>
+                         <tr>
+                              <td></td>
+                              <td class="empty-cell"></td>
+                              <td class="centered-cell">after</td>
+                              <td class="empty-cell"></td>
+                              <td class="centered-cell">before</td>
+                            </tr>
+                           <tr>
+                              <td class="cell-title">Photos Taken</td>
+                              <td class="empty-cell"></td>
+                              <td>
+                                <div class="input-group date form_datetime" id="datetimepicker1"> 
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                  <input id="datepicker-after" type="text" class="form-control"readonly>  
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>                      
+                                </div>
+                              </td> 
+                              <td class="empty-cell"></td>
+                              <td>
+                                <div class="input-group date form_datetime" id="datetimepicker2"> 
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                  <input id="datepicker-before" type="text" class="form-control" readonly>  
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>                      
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="empty-cell-rowdivider">
+                                
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="cell-title">Username</td>
+                              <td class="empty-cell"></td>
+                              <td>
+                                      <input type="text" class="form-control" id="photoSearchQuery" placeholder="Username" method="POST">
+                                  
+                              </td>
+                            </tr>
+                         </table>
+                      </div><!-- advancedsearch-form -->
+                    </div><!-- col-md-8 col-md-offset-3 Advanced Search Form-->
+                 </div><!-- row Advanced Search Form--> 
+        </div><!-- panel-body -->
+      </div> <!--  id="collapseOne" class="panel-collapse collapse" -->
+    </div> <!-- panel panel-default -->
+    </div> <!-- panel panel-group -->
+    </div><!-- col-md-8 col-md-offset-2 Panel-->
+    </div><!--  content -->
+    </div><!--  helper -->
+    </div><!--  container -->
+    
 
-    </div><!-- container -->
-
-
+<!-- Javescript -->
+    <% include  partials/jsdefaults.ejs %>
     <script src="/javascripts/search.js"></script>
     <script src="/javascripts/datepicker.js"></script>
+    <script src="/javascripts/datepicker/js/bootstrap-datetimepicker.js"></script>
+    
+    <!-- random background image generator -->
+    <script>
+      $(document).ready(function() {
+        var backgroundImageArray = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg' ];
+        var background = backgroundImageArray[Math.floor(Math.random() * backgroundImageArray.length)];
+        var path = '../images/';
+        var imageUrl = path + background;
+        $('body').css('background-image', 'url(' + imageUrl +')');
+      }); 
+    </script>
+    
   </body>
 </html>
