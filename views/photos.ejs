@@ -5,31 +5,123 @@
  	<link rel='stylesheet' href='/stylesheets/photogrid.css' />
  </head>
   <body>
-    <div class="container">
+	
 
- <!-- Photogrid -->   
-		<ul class="thumbnails row">
-			<%for (var i =0; i < photosArray.length; i++) { %>
-				<li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
-	    			<a href="#" class="thumbnail">
-	     			 <img data-src="holder.js/150x150" src="http://farm<%= photosArray[i].farm %>.staticflickr.com/<%= photosArray[i].server %>/<%= photosArray[i].id %>_<%= photosArray[i].secret %>_q.jpg" alt="">
-	    			</a>
-	  			</li>
-			<%}%>	
-		</ul>
-<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	      <div class="modal-dialog">
-	        <div class="modal-content">         
-	          <div class="modal-body">
-	          </div>
-	        </div><!-- /.modal-content -->
-	      </div><!-- /.modal-dialog -->
-	    </div><!-- /.modal -->
+	<div class="drawer">
+	      
+	 <!-- Close Drawer icon -->
+	      <div class="icon-close">
+	        <span class="glyphicon glyphicon-remove white"></span>
+	        <p></p>
+	      </div>
 
-    </div> <!-- div container -->
+	<!-- Drawer -->
+		      <form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <div class="col-sm-9 col-sm-offset-1">
+				      <input valutype="text" class="form-control photoSearchQuery" id="photoSearchQuery" placeholder="Search by keywords" method="POST">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				 	 <div class="col-sm-8 col-sm-offset-1">
+				 	 	<section class="drawermenu-datefield">Photos taken after</section>
+					  		<div class="input-group date form_datetime" id="datetimepicker1"> 
+	                    		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	                            <input id="datepicker-after" type="text" class="form-control"readonly>  
+	                        	<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+	                       	</div>
+	                </div>
+				  </div>
+				  <div class="form-group">
+				  	<div class="col-sm-8 col-sm-offset-1">
+				  		<section class="drawermenu-datefield">Photos taken before</section>
+				    		<div class="input-group date form_datetime" id="datetimepicker2"> 
+	                           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	                           <input id="datepicker-before" type="text" class="form-control" readonly>  
+	                           <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>                 
+	                        </div>
+	                </div>
+				   </div>
+				   <div class="form-group">
+				    <div class="col-sm-7 col-sm-offset-1">
+				      	<input valutype="text" class="form-control photoSearchQuery" id="inputUsername" placeholder="Search by Username" method="POST">
+						<br>
+	                	<button class="btn btn-primary" id="searchbutton" type="button" value="Search" method="POST">Search Flickr</button>
+				    </div>
+				  </div>
+				  </div>
+	  			 </div>
+				</form>
+	</div><!-- Drawer -->
+
+	    <div class="container">
+
+	    <div class="icon-menu">  
+	    	<a href="/"><span class="glyphicon glyphicon-home white icon-padding"></span></a>  
+	        <span class="glyphicon glyphicon-search white" ></span>
+	    </div>
+	<div class="photogrid" data-nr="0">
+	 <!-- Photogrid -->   
+	 <%if(photosArray.length>0) { %>
+	 <% var start = 0 %>
+	 <% var last = 10 %>
+			<ul class="thumbnails row">
+				<%for (var i =start; i < last; i++) { %>
+					<li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+		    			<a href="#" class="thumbnail">
+		     			 <img data-id="<%= photosArray[i].id %>" data-owner="<%= photosArray[i].owner %>" src="http://farm<%= photosArray[i].farm %>.staticflickr.com/<%= photosArray[i].server %>/<%= photosArray[i].id %>_<%= photosArray[i].secret %>_q.jpg" alt="">
+		    			</a>
+		  			</li>
+				<%}%>
+				<ul class="pager">
+
+					<li class="pager next">
+					<a href="#">Next &rarr;</a>
+			
+					</li>
+				</ul>
+			</ul>
+
+	<%}else {%>
+	
+	<!-- No Images Found --> 
+	<div class="noresults" style="width: 100%; height: 600px;">
+		<img src="/images/waldo.png" height="70%">
+			<div id="noresults_text">
+				<h3>Unfortunately we didn't find any images matching your search criteria.</h3>
+				<br>
+				<h3>We found Waldo though!</h3>
+			</div>	
+	</div>
+
+	<%}%>
+	</div>
+
+	<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		      <div class="modal-dialog">
+		        <div class="modal-content">         
+		          <div class="modal-body">
+		          </div>
+		          <div class="modal-footer">
+			          <a href="#" class="tooltip-for-icon photopagelink" title="Visit Photo Page"  data-placement="left" data-original-title="Visit Photo Page">
+			          	<span class="glyphicon glyphicon-link icon-padding"></span>
+			          </a>
+			          <a href="#" class="tooltip-for-icon ownerlink" title="Visit Profile Page" data-placement="right" data-original-title="Visit Profile Page">
+			          	<span class="glyphicon glyphicon-user" ></span> 
+			          </a>
+		          </div>
+		        </div><!-- /.modal-content-->
+		      </div><!-- /.modal-dialog -->
+		    </div><!-- /.modal -->
+
+	    </div> <!-- div container --> -->
+	
+
+	
     <% include  partials/jsdefaults.ejs %>
-    <script src="/javascripts/search.js"></script>
+    <script src="/javascripts/tooltip.js"></script>
+    <script src="/javascripts/drawermenu.js"></script>
     <script src="/javascripts/modalpopup.js"></script>
 
   </body>
