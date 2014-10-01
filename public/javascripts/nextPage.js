@@ -1,7 +1,6 @@
 	function nextPage(query, min_date, max_date, username, page) {
 	    
 	    var nextpage = page+1; 
-	    console.log("Next page is: "+nextpage);
 		
 
 	    if(query=='undefined'){

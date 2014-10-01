@@ -1,0 +1,46 @@
+//////////////////////////////////////////////
+// Personal Details
+//////////////////////////////////////////////
+
+name: Daniel Ladvocat Cintra
+uni: dl2901
+email: dl2901@columbia.edu
+
+//////////////////////////////////////////////
+// Setup Instructions
+//////////////////////////////////////////////
+
+In Terminal, go to the /photofinder directory. Once there, type in:
+
+DEBUG=photofinder ./bin/www
+
+//////////////////////////////////////////////
+// Design Decisions
+//////////////////////////////////////////////
+
+My goal was to abide to the heuristics taught in class with special attention to providing a minimalist and simple design such that the user never feels overwhelmed or lost. 
+
+Homepage: 
+Given that most users would most likely use the application to perform a image searches using keywords I decided to make the search bar the most prominent feature on the homepage. As one can see upon visiting the homepage, the user is guided through every step of the way not only with placeholder text telling them to "Search for images" but are also given a hint as to where these images are coming from via the "Search Flickr" button. Both of these choices were made in lieu of the heuristic of error prevention. 
+
+Furthermore, if a user wishes to perform more advanced searches, they can simply click on the "Advanced search" button to open a menu of options. Both date entry fields were created such that the user must select a date from a datepicker (again to reduce the amount of errors that might occur). Should they make a mistake in picking a date, they are given an option to clear the field by clicking the "Clear" field on the bottom of the calendar popup. 
+
+Finally, to make the site aethetically pleasing whilst also maintaining a minimalist design I built in a random image background picker. Every time a user refreshes the page, they'll see a new beautiful image. Not only does this make the site more aesthetically pleasing but also adds some "stickiness" to it making the user curious as to what might be the next image. I changed the brightness of the images to make sure that the "Advanced Search" button was still visibible to the user, 
+
+Photos Page:
+After performing a search 10 images are shown on a black background so as to make them catch the user's attention. Again, in keeping with the minimalist design, I've tried to keep the amount of icons/buttons to a minimum so as to have the user focus on the content. By clicking on the search icon, a menu is presented from the side showing the user the options to search for further images. The "Next" and "Previous" buttons will only appear if there are more images to show. This way the user implicitly understands that there might be more images to see if they wish to browse further, keeping in line with the heuristic of "visibility of system status". 
+
+Clicking on an image, brings the focus to it with the option to visit the Flickr image page or the owner's profile page. Hovering over the icons, the user is shown tooltips in case it wasn't clear what would happen if clicked on, abiding by the principle of "recognition rather than recall". 
+
+If a user performs a search and no results are returned (try query:"kitten", username:"Stewart"), they are shown a friendly screen telling them that no results were found. Thus helping the user "recognize, diagnose, and recover from errors". 
+
+Error Page:
+Finally, if a user were to type in a wrong URL such as "/about" they'll again be shown a friendly message, directing them to visit the homepage.
+
+"Flexibility and efficiency of use":
+With respect to making things flexible and more efficient for the expert user I implemented two things:
+
+1. You can hit enter either when in the search box, or in the Username box
+2. You can use your keyboard to browser and select the dates
+
+

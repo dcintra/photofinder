@@ -4,7 +4,7 @@ var main = function() {
 var open = false;
     
 
-    $('.icon-menu').click( function() {
+    $('#searchicon').click( function() {
 
         if(!open) {
             $('.drawer').animate({
