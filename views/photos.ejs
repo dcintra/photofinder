@@ -28,7 +28,7 @@
 					  		<div class="input-group date form_datetime" id="datetimepicker1"> 
 	                    		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 	                            <input id="datepicker-after" type="text" class="form-control"readonly>  
-	                        	<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+	                        	
 	                       	</div>
 	                </div>
 				  </div>
@@ -38,7 +38,7 @@
 				    		<div class="input-group date form_datetime" id="datetimepicker2"> 
 	                           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 	                           <input id="datepicker-before" type="text" class="form-control" readonly>  
-	                           <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>                 
+	                                            
 	                        </div>
 	                </div>
 				   </div>
@@ -63,24 +63,28 @@
 	<div class="photogrid" data-nr="0">
 	 <!-- Photogrid -->   
 	 <%if(photosArray.length>0) { %>
-	 <% var start = 0 %>
-	 <% var last = 10 %>
 			<ul class="thumbnails row">
-				<%for (var i =start; i < last; i++) { %>
+				<%for (var i =0; i < photosArray.length; i++) { %>
 					<li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
 		    			<a href="#" class="thumbnail">
 		     			 <img data-id="<%= photosArray[i].id %>" data-owner="<%= photosArray[i].owner %>" src="http://farm<%= photosArray[i].farm %>.staticflickr.com/<%= photosArray[i].server %>/<%= photosArray[i].id %>_<%= photosArray[i].secret %>_q.jpg" alt="">
 		    			</a>
 		  			</li>
 				<%}%>
-				<ul class="pager">
-
-					<li class="pager next">
-					<a href="#">Next &rarr;</a>
-			
-					</li>
-				</ul>
 			</ul>
+
+					<ul class="pager">
+				<%if (page > 1) {%>
+						<li class="previous" id="previous_button" onClick="previousPage('<%=query%>', '<%=min_upload_date%>', '<%=max_upload_date%>','<%=username%>',<%=page%>)">
+						<a href="#">&larr; Previous</a>
+				<%}%>
+				<%if (page < pages) {%>
+						<li class="next" id="nextpage_button" onClick="nextPage('<%=query%>', '<%=min_upload_date%>', '<%=max_upload_date%>','<%=username%>',<%=page%>)">
+						<a href="#">Next &rarr;</a>
+				
+						</li>
+					</ul>
+				<%}%>
 
 	<%}else {%>
 	
@@ -123,6 +127,8 @@
     <script src="/javascripts/tooltip.js"></script>
     <script src="/javascripts/drawermenu.js"></script>
     <script src="/javascripts/modalpopup.js"></script>
+    <script src="/javascripts/nextPage.js"></script>
+    <script src="/javascripts/previousPage.js"></script>
 
   </body>
 </html>

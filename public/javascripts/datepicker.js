@@ -1,30 +1,45 @@
-// $(function() {
-//       $("#datepicker-after").datepicker();
-//       $("#datepicker-after").datepicker("setDate", new Date);
-//         var dateAfter = document.getElementById('datepicker-after').value
-//       $("#datepicker-before").datepicker();
-//       $("#datepicker-before").datepicker("setDate", new Date);
-//       var dateBefore = document.getElementById('datepicker-before').value
-//       console.log(dateAfter + dateBefore)
-//     });
+// $ (function () {
 
+//       $('#datetimepicker1').datetimepicker({
+          
+          
+
+//       });
+      
+                  
+// });
+
+// $ (function () {
+
+//       $('#datetimepicker2').datetimepicker({
+          
+      	
+      	
+//       });
+     
+                  
+// });
 
 $ (function () {
 
-      $('#datetimepicker1').datetimepicker({
-          pickTime: false
+      $('#datetimepicker1').datepicker({
+          
+          format: "M dd, yyyy",
+          clearBtn: true
 
       });
-      console.log('hello' );
+      
                   
 });
 
 $ (function () {
 
-      $('#datetimepicker2').datetimepicker({
-          pickTime: false
-
+      $('#datetimepicker2').datepicker({
+          
+      	format: "M dd, yyyy", 
+      	clearBtn: true
+      	
       });
-      console.log('hello' );
+     
                   
 });
